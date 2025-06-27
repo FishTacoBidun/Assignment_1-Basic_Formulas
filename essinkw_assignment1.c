@@ -19,41 +19,49 @@ int numSpheres;
 double R;
 double ha;
 double hb;
-double SAAverage;
-double VAverage;
+double SA = 0.0;
+double V = 0.0;
+double SAAverage = 0.0;
+double VAverage = 0.0;
 
 numSpheres = getNumSpheres();
 
 for(int i = 0; i < numSpheres; i++)
 {
-  while(R < 0 || ha < 0 || hb < 0 || ha < hb)
+  do
   {
-    printf("Obtaining data for spherical segment number %x\n", i);
+    printf("Obtaining data for spherical segment number %d\n", i);
 
     //get R
     printf("What is the radius of the sphere (R)?\n");
-    scanf("%f", &R);
+    scanf("%lf", &R);
 
     //get ha
     printf("What is the height of the top area of the spherical segment (ha)?\n");
-    scanf("%f", &ha);
+    scanf("%lf", &ha);
 
     //get hb
     printf("What is the height of the bottom area of the spherical segment (hb)?\n");
-    scanf("%f", &hb);
+    scanf("%lf", &hb);
 
-    printf("Entered data: R = %f ha = %f hb = %f.\n", R, ha, hb);
+    printf("Entered data: R = %lf ha = %lf hb = %lf.\n", R, ha, hb);
 
     //error check
-    if(R < 0 || ha < 0 || hb < 0 || ha < hb)
+    if(R < 0 || ha < 0 || hb < 0 || R < ha || R < hb || ha < hb)
     {
       printf("Invalid Input.\n");
     }
-  }
+  } while(R < 0 || ha < 0 || hb < 0 || R < ha || R < hb || ha < hb);
+
+  //find surface area and volume
+  SA = findSphereSA(R, ha, hb);
+  V = findSphereV(R, ha, hb);
+
+  printf("Total Surface Area = %.2lf Volume = %.2lf.\n", SA, V);
 
   //store SA and V values to find the averages later
-  SAAverage += findSphereSA(R, ha, hb);
-  VAverage += findSphereV(R, ha, hb);
+  SAAverage += SA;
+  VAverage += V;
 }
 
 //find surface area and volume averages
@@ -61,7 +69,7 @@ SAAverage = SAAverage / numSpheres;
 VAverage = VAverage / numSpheres;
 
 //print averages
-printf("Average Surface Area = %f Average Volume = %f.\n", SAAverage, VAverage);
+printf("Average Surface Area = %.2lf Average Volume = %.2lf.\n", SAAverage, VAverage);
 
 return 0;
 }
@@ -75,7 +83,7 @@ int getNumSpheres(void)
   while(numSpheres < 2 || numSpheres > 10)
   {
     printf("How many spherical segments you want to evaluate [2-10]?\n");
-    scanf("%x", &numSpheres);
+    scanf("%d", &numSpheres);
   }
 
   return numSpheres;
@@ -122,7 +130,7 @@ double findSphereV(double R, double ha, double hb)
   h = findH(ha, hb);
 
   //calculate volume
-  V = (1/6) * PI * h * (3 * (a * a) + 3 * (b * b) + (h * h));
+  V = (1.0/6.0) * PI * h * (3.0 * (a * a) + 3.0 * (b * b) + (h * h));
 
   return V;
 }
