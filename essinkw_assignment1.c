@@ -44,7 +44,7 @@ for(int i = 0; i < numSpheres; i++)
     printf("What is the height of the bottom area of the spherical segment (hb)?\n");
     scanf("%lf", &hb);
 
-    printf("Entered data: R = %lf ha = %lf hb = %lf.\n", R, ha, hb);
+    printf("Entered data: R = %.2lf ha = %.2lf hb = %.2lf.\n", R, ha, hb);
 
     //error check
     if(R < 0 || ha < 0 || hb < 0 || R < ha || R < hb || ha < hb)
