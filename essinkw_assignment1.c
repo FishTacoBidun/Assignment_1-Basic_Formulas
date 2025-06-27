@@ -6,21 +6,21 @@ const double PI = 3.14159265359;
 
 //function definitions
 int getNumSpheres(void);
-void findSphereSA(double R, double ha, double hb);
-void findSphereV(double R, double ha, double hb);
+double findSphereSA(double R, double ha, double hb);
+double findSphereV(double R, double ha, double hb);
 double findA(double R, double ha);
-double findB(double R. double hb);
+double findB(double R, double hb);
 double findH(double ha, double hb);
 
 int main(void) {
 
 //variables
-int numSphere;
+int numSpheres;
 double R;
 double ha;
 double hb;
 double SAAverage;
-double VAverge;
+double VAverage;
 
 numSpheres = getNumSpheres();
 
@@ -95,7 +95,7 @@ double findSphereSA(double R, double ha, double hb)
   //find a, b, and c
   a = findA(R, ha);
   b = findB(R, hb);
-  c = findH(ha, hb);
+  h = findH(ha, hb);
 
   //find top. bottom, and lateral surface area
   TA = PI * (a * a);
@@ -119,7 +119,7 @@ double findSphereV(double R, double ha, double hb)
   //find a, b, and c
   a = findA(R, ha);
   b = findB(R, hb);
-  c = findH(ha, hb);
+  h = findH(ha, hb);
 
   //calculate volume
   V = (1/6) * PI * h * (3 * (a * a) + 3 * (b * b) + (h * h));
@@ -138,7 +138,7 @@ double findA(double R, double ha)
 }
 
 //finds b
-double findB(double R. double hb)
+double findB(double R, double hb)
 {
   double b;
 
