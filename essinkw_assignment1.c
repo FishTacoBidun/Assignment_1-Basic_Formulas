@@ -26,7 +26,7 @@ numSpheres = getNumSpheres();
 
 for(int i = 0; i < numSpheres; i++)
 {
-  while(R < 0 || ha < 0 || hb < 0)
+  while(R < 0 || ha < 0 || hb < 0 || ha < hb)
   {
     printf("Obtaining data for spherical segment number %x\n", i);
 
@@ -45,7 +45,7 @@ for(int i = 0; i < numSpheres; i++)
     printf("Entered data: R = %f ha = %f hb = %f.\n", R, ha, hb);
 
     //error check
-    if(R < 0 || ha < 0 || hb < 0)
+    if(R < 0 || ha < 0 || hb < 0 || ha < hb)
     {
       printf("Invalid Input.\n");
     }
