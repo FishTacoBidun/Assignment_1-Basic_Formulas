@@ -35,15 +35,25 @@ for(int i = 0; i < numSpheres; i++)
     printf("What is the height of the top area of the spherical segment (ha)?\n");
     scanf("%f", &ha);
 
-
     //get hb
     printf("What is the height of the bottom area of the spherical segment (hb)?\n");
     scanf("%f", &hb);
+
+    printf("Entered data: R = %f ha = %f hb = %f.\n", R, ha, hb);
+
+    //error check
+    if(R < 0 || ha < 0 || hb < 0)
+    {
+      printf("Invalid Input.\n");
+    }
   }
 
   SAAverage += findSphereSA(R, ha, hb);
   VAverage += findSphereV(R, ha, hb);
 }
+
+SAAverage = SAAverage / numSpheres;
+VAverage = VAverage / numSpheres;
 
 return 0;
 }
