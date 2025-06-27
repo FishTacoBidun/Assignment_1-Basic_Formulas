@@ -2,13 +2,31 @@
 #include <math.h>
 
 int getNumSpheres(void);
-void getSphereInfo(int numSpheres);
 void findSphereSA(double R, double ha, double hb);
 void findSphereV(double R, double ha, double hb);
 
 int main(void) {
 
-  
+int numSphere;
+double R;
+double ha;
+double hb;
+double SAAverage;
+double VAverge;
+
+numSpheres = getNumSpheres();
+
+for(int i = 0; i < numSpheres; i++)
+{
+
+  while(R < 0 || ha < 0 || hb < 0)
+  {
+    
+  }
+
+  SAAverage += findSphereSA(R, ha, hb);
+  VAverage += findSphereV(R, ha, hb);
+}
 
 return 0;
 }
@@ -19,20 +37,14 @@ int getNumSpheres(void)
 
 }
 
-//gets the dimensions of a sphere needed to perform calculations
-void getSphereInfo(int numSpheres)
-{
-
-}
-
 //does the math to find the sphere's surface area 
-void findSphereSA(double R, double ha, double hb)
+double findSphereSA(double R, double ha, double hb)
 {
 
 }
 
-//does the math to find the sphere's volume area 
-void findSphereV(double R, double ha, double hb)
+//does the math to find the sphere's volume
+double findSphereV(double R, double ha, double hb)
 {
 
 }
